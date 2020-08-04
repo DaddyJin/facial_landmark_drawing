@@ -1,7 +1,9 @@
 from landmark_image_utils import gen_ldmk_image_dot, \
-    gen_ldmk_image_poly_68, gen_ldmk_image_poly_98, list2ldmk
+    gen_ldmk_image_poly_68, gen_ldmk_image_poly_98, list2ldmk, \
+    gen_ldmk_image_color_68,gen_ldmk_image_color_68_V2
 import numpy as np
 import cv2
+
 
 if __name__ == '__main__':
     # load test image
@@ -29,7 +31,11 @@ if __name__ == '__main__':
     poly_image_98 = gen_ldmk_image_poly_98(ldmk_98, image_shape)
     dot_image_68 = gen_ldmk_image_dot(ldmk_68, image_shape)
     dot_image_98 = gen_ldmk_image_dot(ldmk_98, image_shape)
+    color_image_68 = gen_ldmk_image_color_68(ldmk_68, image_shape)
+    # cv2.imshow('color_image_68', color_image_68)
+    # cv2.imwrite('./color_image_68.png', color_image_68)
+    # cv2.waitKey()
 
-    final = cv2.hconcat([poly_image_68, poly_image_98, dot_image_68, dot_image_98])
-    cv2.imshow('poly_68/poly_98/dot_68/dot_98', final)
+    final = cv2.hconcat([poly_image_68, poly_image_98, dot_image_68, dot_image_98, color_image_68])
+    cv2.imshow('poly_68/poly_98/dot_68/dot_98/color_68', final)
     cv2.waitKey()
